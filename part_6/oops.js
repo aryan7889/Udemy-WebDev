@@ -184,9 +184,41 @@ class ShoppingCart{
     }
 
 addItem(itemName, quantity, price){
-    
+    this.items.push({itemName, quantity, price});
+    console.log(`${quantity}x ${itemName} added to the cart`);
 }    
+removeItem(itemName){
+    this.items = this.items.filter(item => item.itemName !== itemName);
+    console.log(`${itemName} removed from the cart`);
+    
 }
+getTotalCost(){
+    return this.items.reduce((total,item) => total + item.quantity * item.price, 0);
+
+}
+}
+let cart = new ShoppingCart();
+cart.addItem("Apple", 3, 10);
+cart.addItem("Banana", 5, 5);
+cart.removeItem("Apple")
+console.log(`Total cost: ${cart.getTotalCost()}`);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
