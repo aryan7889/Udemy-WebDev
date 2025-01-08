@@ -18,16 +18,22 @@ let account = new BankBalance()
 class CoffeeMachine{
 
     start(){
-        return `Starting the machine...`
+        return `Starting the machine...`;
     }
     brewcoffee (){
-        return `brewing the coffee ....`
+        return `brewing the coffee ....`;
+    }
+    pressStartButton (){
+        let msgone = this.start;
+        let msgtwo = this.brewcoffee;
+        return `${msgone} + ${msgtwo}`
     }
 }
 
-let mymachine = new CoffeeMachine()
+let mymachine = new CoffeeMachine();
 console.log(mymachine.start());
 console.log(mymachine.brewcoffee());
+// console.log(mymachine.pressStartButton());
 
 
 
