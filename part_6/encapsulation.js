@@ -24,19 +24,19 @@ class CoffeeMachine{
         return `brewing the coffee ....`;
     }
     pressStartButton (){
-        let msgone = this.start;
-        let msgtwo = this.brewcoffee;
+        let msgone = this.start();
+        let msgtwo = this.brewcoffee();
         return `${msgone} + ${msgtwo}`
     }
 }
 
 let mymachine = new CoffeeMachine();
-console.log(mymachine.start());
-console.log(mymachine.brewcoffee());
+// console.log(mymachine.start());
+// console.log(mymachine.brewcoffee());
 // console.log(mymachine.pressStartButton());
 
 
-
+// 
 
 
 
