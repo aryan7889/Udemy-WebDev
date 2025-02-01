@@ -82,21 +82,3 @@ let teamaker = createTeaMaker("hitesh");
 let result = teamaker("green tea")
 console.log(result);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
