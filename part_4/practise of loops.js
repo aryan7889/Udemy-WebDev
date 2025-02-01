@@ -32,5 +32,52 @@ function guessNumber(){
                 console.log("so close but high");}
             else 
                 console.log("low value");}
+attempt--;
 }
 guessNumber()
+
+/*
+notes of the above solution has to be wtiiten.
+*/
+
+/*
+4. ATM Withdrawal System
+Problem:
+Write a program that simulates an ATM. It should:
+
+Ask the user for their PIN (assume the correct PIN is "1234").
+If the PIN is correct, ask how much money they want to withdraw.
+If they have sufficient balance (assume ₹5000), allow withdrawal.
+Otherwise, show "Insufficient funds!".
+If they enter the wrong PIN 3 times, lock the account.
+*/
+
+function atmpin(){
+    const correctpin = "1234"
+    let balance = 5000;
+    let attempt = 3;
+
+    while (attempt>0) {
+        let pin = prompt("Enter the pin")
+        if (pin === correctpin) {
+            let amount = parseInt(prompt(`Enter the amount to withdraw.`))
+            if (amount<=balance) {
+                balance -= amount;
+                console.log(`Withdrawn succesfully Remaining balance ${balance}`);
+            }else {
+                console.log("Insufficient balance.");
+                
+            }
+            return;
+        }else {
+            console.log("incorrect pin");
+            attempt--;
+        }
+}
+console.log("account locked");
+}
+atmpin()
+
+
+/*
+*/
