@@ -109,4 +109,62 @@ function login(username, password){
         
     }
 }
-login("admin", "abc")
+// login("admin", "abc")
+
+
+/*
+Memory updated
+Great! Here are some more challenging if-else practice problems that will push your problem-solving skills further.
+
+1. FizzBuzz Challenge
+Problem:
+Write a program that prints numbers from 1 to 100. But for multiples of 3, print "Fizz" instead of the number, and for multiples of 5, print "Buzz". For numbers which are multiples of both 3 and 5, print "FizzBuzz".
+
+Hint:
+Use the % (modulus) operator to check divisibility.
+*/
+
+function FizzBuzz(){
+    for (let i = 0; i <= 100; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log(`FIZZBUZZ`);
+        }else if (i % 3 === 0) {
+            console.log(`Fizz`);
+        }else if (i % 5 === 0) {
+            console.log(`Buzz`);         
+        }else {
+            console.log(i);   
+        } 
+    }
+}
+
+// FizzBuzz()
+
+
+/*
+2. Triangle Type Checker
+Problem:
+Write a JavaScript function that takes three side lengths as input and determines if the triangle is:
+
+Equilateral (all sides are equal),
+Isosceles (two sides are equal),
+Scalene (no sides are equal),
+Not a Triangle (sum of any two sides must be greater than the third side).
+
+*/
+
+function triangle(side1, side2, side3){
+    if (side1 === side2 === side3&& side1 + side2 > side3) {
+        console.log(`triangle is the equilateral`);
+        }else if (side1 === side2 && side2 !== side3 && side1 !==side3 &&
+            side1 + side2 > side3) {
+            console.log(`triangle is the isosceles triangle.`);
+        }else if (side1 !== side2 && side2 !== side3 && side1 !==side3 &&
+            side1 + side2 > side3) {
+            console.log(`triangke is scalene triangle`);
+        }else {
+            console.log(`triangle is not valid.`);
+            
+        }
+}
+triangle(5,6,6)
