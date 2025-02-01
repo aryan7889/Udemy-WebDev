@@ -34,7 +34,7 @@ function guessNumber(){
                 console.log("low value");}
 attempt--;
 }
-guessNumber()
+// guessNumber()
 
 /*
 notes of the above solution has to be wtiiten.
@@ -76,8 +76,86 @@ function atmpin(){
 }
 console.log("account locked");
 }
-atmpin()
+// atmpin()
 
 
 /*
+5. Find the Greatest of Three Numbers
+Problem:
+Write a program that takes three numbers as input and prints the largest one.
+
+
 */
+
+function greatestnumber (a,b,c){
+if (a > b && a > c) {
+    console.log("a is the largest.");
+}else if (b > a && b > c) {
+    console.log("b is the largest");
+}else {
+    console.log("c is the largest.");
+}
+return;
+}
+// greatestnumber(10,20,8)
+
+/*
+Time-Based Greeting System
+Problem:
+Write a program that checks the current hour of the day and displays:
+
+"Good Morning" if time is between 5 AM and 12 PM.
+"Good Afternoon" if time is between 12 PM and 5 PM.
+"Good Evening" if time is between 5 PM and 9 PM.
+"Good Night" otherwise.
+Hint:
+Use new Date().getHours() to get the current hour.
+
+*/
+
+function greetmessage (){
+    let hour = new Date().getHours();
+
+    if (hour>=5 && hour < 12 ) {
+        console.log("Good Morning");
+       }  
+       else if (hour >= 12 && hour < 17) {
+        console.log("good evening");
+    }else{
+        console.log("good night");
+        
+    }
+}
+// greetmessage();
+
+// new notes have to prepared of the above solution and the differnet research we have done 
+// with the help of ai also.
+
+
+/*7. Rock, Paper, Scissors Game
+Problem:
+Write a simple Rock, Paper, Scissors game where the user selects one of the three options, and the computer randomly picks one. Print the winner based on these rules:
+
+Rock beats Scissors
+Scissors beats Paper
+Paper beats Rock
+Same choice means it's a Tie
+*/
+function game(usernchoice){
+    let choice = ["rock", "paper", "scissors"];
+    let computerchoice = choice[Math.floor(Math.random()*3)];
+    console.log(`You Choose ${usernchoice} and computer choose ${computerchoice}`);
+    
+    if (usernchoice === computerchoice) {
+        console.log("it is tie.");    
+    }else if ((usernchoice === "Rock" && computerchoice === "scissors")||
+            (usernchoice === "paper" && computerchoice === "rock")||
+            (usernchoice === "scissors" && computerchoice === "paper")) {
+        console.log("You Win"); 
+    }else {
+        console.log("you lose.");
+        
+    }
+}
+game("rock")
+
