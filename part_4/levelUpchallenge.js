@@ -85,42 +85,42 @@ stop the loop when `"chai"` is found and store all
 previous tea types in an array named `availableTeas`.
 */
 
-let teacollection = ["early grey", "green tea", "chai",
-    "oolong tea"]
+let teacollection = ["earl grey", "green tea", "chai", "oolong tea"]
 let availableTeas = []
-teacollection.forEach(function (tea) {
+
+teacollection.forEach(function(tea){
     if (tea === "chai") {
-        return;
-    }
-   availableTeas.push(tea)
-});
+    return }
+
+availableTeas.push(tea);
+});  
 // console.log(availableTeas);
 
 
-// problem 8 
-let myWorldCities = ["berlin", "tokyo", "sydney", "paris"]
-let traveledCities = []
 
-myWorldCities.forEach(city => {
-    if (city === 'sydney') {
-        return
+// problem 8 
+let cities1 = ["berlin", "tokyo", "sydney", "paris"]
+let travelledcities = []
+cities1.forEach(function(place){
+    if (place === "sydney") {
+        return;
+        
     }
-    traveledCities.push(city)
+    travelledcities.push(place)
 });
-// console.log(traveledCities);
+// console.log(travelledcities);
 
 
 // problem 9
-let myNumbers = [2, 5, 7, 9]
-let doubledNumbers = []
-for (let i = 0; i < myNumbers.length; i++) {
-    if (myNumbers[i] === 7 ) {
-        continue
+let array = [2, 5, 7, 9];
+let doubledNumbered = [];
+for (let i = 0; i < array.length; i++) {
+    if (array[i]===7) {
+        continue;
     }
-    doubledNumbers.push(myNumbers[i]* 2)
+    doubledNumbered.push(array[i]*2)
 }
-
-// console.log(doubledNumbers);
+console.log(doubledNumbered);
 
 
 // problem 10

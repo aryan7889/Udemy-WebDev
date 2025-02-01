@@ -37,7 +37,7 @@ let orderconfirmation = ordertea("chai")
 
 
 /*
-Write an arroe function named calcutetotal taht takes two parameter:
+Write an arrow function named calculatetotal taht takes two parameter:
 price and quantity. the function should return the total cost by multiplying 
 the price and quantity.
 Store the result in a variable named total cost.
