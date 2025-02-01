@@ -1,27 +1,22 @@
 // number
-// let balance = 120;
+let balance = 120;
 
-// let anotherbalance = new Number(120);
+let anotherbalance = new Number(120);
 
 // console.log(balance);
 // console.log(anotherbalance.valueOf());
-
-
-
-// console.log(typeof balance);
-// console.log(typeof anotherbalance);
+console.log(typeof balance);
+console.log(typeof anotherbalance);
 
 
 // boolean
-// let isActive = true;
-// let isReallyActive = new Boolean(true)/*not recoomended 
-
-                                        //   way to write 
-
+let isActive = true;
+let isReallyActive = new Boolean(true)/*not recoomended way to write 
+*/
 // null and undefined 
 
-// let firstname = null;
-// let lastname = undefined;
+let firstname = null;
+let lastname = undefined;
 // console.log(firstname);
 // console.log(lastname);
 

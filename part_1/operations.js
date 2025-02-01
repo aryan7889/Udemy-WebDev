@@ -16,6 +16,7 @@ myscore++;
 
 let credits = 56;
 credits--;
+console.log(credits);
 
 
 // comparison operations

@@ -19,14 +19,14 @@ while (j>0) {
 // console.log(countdown);
 
 // problem 3 
-// let teacollection = []
-// let tea 
-// do {
-//     prompt(`Enter Your favourite tea (type "stop" to finish)`)
-//     if (tea !== "stop") {
-//         teacollection.push(tea)
-//     }
-// } while (tea !== "stop");
+let teacollection = []
+let tea 
+do {
+    prompt(`Enter Your favourite tea (type "stop" to finish)`)
+    if (tea !== "stop") {
+        teacollection.push(tea)
+    }
+} while (tea !== "stop");
 
 
 

@@ -1,8 +1,10 @@
-const username = {"first name": "Aryan",
-     isLoggedIn: false, };
+const username = {
+     'first name' : "Aryan",
+     isLoggedIn: false
+};
 
 
-// username.firstname = "Mr.H";
+username.firstname = "Mr.H";
 username.lastname = "gp";
 // console.log(username["first name"]);
 // console.log(username.lastname);
@@ -11,7 +13,7 @@ username.lastname = "gp";
 // console.log(typeof username);
 
 let today = new Date()
-// console.log(today);
+// console.log(today)
 // console.log(today.getDate());
 
 // Arrays 
