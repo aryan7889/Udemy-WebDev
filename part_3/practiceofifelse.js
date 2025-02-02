@@ -217,7 +217,7 @@ function discounts(amount){
 // Average → 5% Bonus.
 // Poor → No Bonus.
 // Experience: If the employee has more than 3 years, increase their bonus by 5% extra.
-
+/*MINE:
 function bounses(experience , performance , basesalary){
     let basebonus = 0;
     if (performance === "excellent") {
@@ -237,8 +237,39 @@ if (experience>3) {
 }
 }
 
-bounses(5,"excellent",10000);
+bounses(5,"excellent",10000);*/
 
+// some modifications:
+function bonuses(experience, performance, baseSalary) {
+    let bonusPercentage = 0;
+
+    // Determine base bonus percentage based on performance
+    if (performance === "excellent") {
+        bonusPercentage = 20;
+    } else if (performance === "good") {
+        bonusPercentage = 10;
+    } else if (performance === "average") {
+        bonusPercentage = 5;
+    } else if (performance === "poor") {
+        bonusPercentage = 0;
+    } else {
+        console.log("Invalid performance rating.");
+        return;
+    }
+
+    // Extra 5% bonus if experience is more than 3 years
+    if (experience > 3) {
+        bonusPercentage += 5;
+    }
+
+    let totalBonus = (baseSalary * bonusPercentage) / 100;
+
+    console.log(`Based on your ${performance} performance and ${experience} 
+        years of experience, you get a bonus of ₹${totalBonus}. Your total salary including bonus is ₹${baseSalary + totalBonus}.`);
+}
+
+// Example call
+bonuses(5, "excellent", 10000);
 
 
 
