@@ -154,8 +154,92 @@ function game(usernchoice){
         console.log("You Win"); 
     }else {
         console.log("you lose.");
-        
     }
 }
-game("rock")
+// game("rock")
+
+
+// Password Strength Checker
+// Problem:
+// Write a program that checks the strength of a password:
+
+// Strong Password: At least 8 characters, contains letters and numbers.
+// Weak Password: Less than 8 characters.
+// Very Weak Password: Only numbers or only letters.
+
+function cheecking(passwordcheck){
+    if (passwordcheck.length<8) {
+        console.log("weak password.");
+    }else 
+    if (passwordcheck.length > 8 && /[a-z]/.test(passwordcheck) && /[0-9]/.test(passwordcheck && /[%$#@&*]/.test(passwordcheck))){
+        console.log("Very strong password.");
+        } else if (/[0-9]/.test(passwordcheck) || /[a-z A-Z]/.test(passwordcheck) || passwordcheck.length<8) {
+            console.log("weak password choose another.");
+        }else{
+            console.log("very strong");
+        }
+}
+// cheecking("A9ahkhbdb%^&")
+
+
+
+
+// Discount Calculator
+// Problem:
+// A store offers discounts based on the total amount spent:
+
+// Above ₹5000 → 20% Discount.
+// ₹2000 - ₹5000 → 10% Discount.
+// ₹1000 - ₹2000 → 5% Discount.
+// Below ₹1000 → No Discount.
+
+function discounts(amount){
+    let discount = 0;
+    if (amount >= 5000) {
+        discount = amount*0.20;
+        console.log(`Your payable amount is ${amount - discount} and discount is of ${discount}`);
+    }else if (amount >= 2000) {
+        discount = amount*0.10;
+        console.log(`Your payable amount is ${amount - discount} and discount is of ${discount}`);
+    }else{
+        console.log(`No discount for this amount ${amount}`);   
+    }
+}
+// discounts(4000);
+// discounts(5001);
+// discounts(1999)
+
+// A software company gives bonuses based on performance and experience:
+
+// Performance Rating:
+// Excellent → 20% Bonus.
+// Good → 10% Bonus.
+// Average → 5% Bonus.
+// Poor → No Bonus.
+// Experience: If the employee has more than 3 years, increase their bonus by 5% extra.
+
+function bounses(experience , performance , basesalary){
+    let basebonus = 0;
+    if (performance === "excellent") {
+        basebonus = basesalary*0.2;
+        console.log(`since your peerformance is ${performance} we are giving you bonus ${basebonus+basesalary}`);
+    }else if (performance === "good") {
+        basebonus = basesalary*0.1;
+        console.log(`since your peerformance is ${performance} we are giving you bonus ${basebonus}`);
+    }else if (performance === "average") {
+        basebonus = basesalary*0.05;
+        console.log(`since your peerformance is ${performance} we are giving you bonus ${basebonus}`);
+    }else if (performance === "poor") {
+        console.log("no bonus");
+    }
+if (experience>3) {
+    console.log("you have given hike ask manager");
+}
+}
+
+bounses(5,"excellent",10000);
+
+
+
+
 
