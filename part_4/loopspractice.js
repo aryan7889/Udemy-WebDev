@@ -34,11 +34,14 @@ while (i<=10) {
 // 📝 Challenge 4: Reverse an Array using for...of
 // 🔹 Task: Print all elements of an array in reverse order using a for loop.
 // 💡 Hint: Start the loop from the last index and move to the first.
-let arr = [10,20,30,40,50]
+let arr = [10,20,30,40,50]    
+let store = []
+
 for (i = arr.length - 1;i>=0;i--) {
-    let store = arr[i]
-    // console.log(store);
-}
+    store.push(arr[i])   
+}    
+// console.log(store);
+
 
 
 
@@ -56,3 +59,27 @@ for (const character of str) {
     }
 }
 // console.log(count);
+
+// // 📝 Challenge 6: Extract Object Keys and Values
+// 🔹 Task: Use a for...in loop to print all keys and values of an object.
+// 💡 Hint: Use object[key] to access values.
+
+let student = { name: "Amit", age: 21, grade: "A" };
+
+for (let key in student) {
+    // console.log(`${key}:${student[key]}`);
+}
+
+// 📝 Challenge 7: FizzBuzz Challenge
+for (let i = 0; i <=20; i++) {
+    if (i%3===0 && i%5===0) {
+        console.log("fizzbuzz");
+    } else if (i%3 ===0) {
+        console.log("fizz");
+    } else if (i%5===0) {
+        console.log("buzz");
+    } else {
+        console.log(i);
+
+    }
+}
