@@ -73,13 +73,39 @@ for (let key in student) {
 // 📝 Challenge 7: FizzBuzz Challenge
 for (let i = 0; i <=20; i++) {
     if (i%3===0 && i%5===0) {
-        console.log("fizzbuzz");
+        // console.log("fizzbuzz");
     } else if (i%3 ===0) {
-        console.log("fizz");
+        // console.log("fizz");
     } else if (i%5===0) {
-        console.log("buzz");
+        // console.log("buzz");
     } else {
-        console.log(i);
+        // console.log(i);
 
     }
 }
+
+//Challenges for for...of Loop
+// 📝 Challenge 1: Print All Elements of an Array
+// 🔹 Task: Use for...of to print all elements of an array.
+
+let colors = ["green","red","yellow","blue"];
+
+for (let access of colors) {
+    // console.log(access);
+}
+
+
+let words = ["apple", "banana", "watermelon", "kiwi"];
+let longestWord = "";
+
+for (let word of words) {
+    if (word.length > longestWord.length) {
+        longestWord = word;
+    }
+}
+
+console.log("Longest Word:", longestWord);
+
+
+
+
