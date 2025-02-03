@@ -104,7 +104,7 @@ for (let word of words) {
     }
 }
 
-console.log("Longest Word:", longestWord);
+// console.log("Longest Word:", longestWord);
 
 
 
