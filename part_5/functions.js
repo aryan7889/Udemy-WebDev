@@ -195,4 +195,42 @@ if(n===0){
 }
 return fibonacci(n-1)+fibonacci(n-2)
 }
-console.log(fibonacci(4));
+// console.log(fibonacci(4));
+
+
+// 📝 Problem 6: Count Occurrences of a Character in a String
+// 🔹 Task: Write a function countChar(str, char) that counts how many 
+// times a specific character appears in a string.
+
+function countChar (str , char){
+    let count = 0
+    for (const c of str) {
+        if (c===char) {
+            count ++;
+        }
+    }       
+     return count;
+}
+// console.log(countChar("hello","l"));
+
+// 📝 Problem 8: Calculate the Sum of Digits in a Number
+
+function sumDigits(num) {
+    return num.toString().split("").reduce((sum, digit) => sum + Number(digit), 0);
+}
+
+// console.log(sumDigits(123));
+
+// 📝 Problem 9: Sum of First N Fibonacci Numbers
+function sumFibonacci(n) {
+    let a = 0, b = 1, sum = 0;
+    for (let i = 0; i < n; i++) {
+        sum += a;
+        let temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return sum;
+}
+
+// console.log(sumFibonacci(6));
