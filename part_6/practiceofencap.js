@@ -87,4 +87,111 @@ let perso1 = new Person("bob", 25)
 // It allows users to interact with a system without knowing how it works internally.
 // It is commonly used in APIs, libraries, and classes where users just 
 // call methods without worrying about the underlying logic.
+class BankAccount {
+    #balance;  // Private variable
+
+    constructor(balance) {
+        this.#balance = balance;
+    }
+
+    #validateTransaction(amount) {  // Private method
+        return amount > 0;
+    }
+
+    withdraw(amount) {
+        if (this.#validateTransaction(amount) && this.#balance >= amount) {
+            this.#balance -= amount;
+            console.log(`Withdrawn: $${amount}`);
+        } else {
+            console.log("Invalid transaction or insufficient funds!");
+        }
+    }
+
+    deposit(amount) {
+        if (this.#validateTransaction(amount)) {
+            this.#balance += amount;
+            console.log(`Deposited: $${amount}`);
+        } else {
+            console.log("Invalid deposit amount!");
+        }
+    }
+
+    getBalance() {
+        return `Your balance is $${this.#balance}`;
+    }
+}
+
+const account = new BankAccount(1000);
+// console.log(account.getBalance()); // User only sees output
+// account.withdraw(500);
+// console.log(account.getBalance());
+
+// 
+// 🔥 Key Benefits of Polymorphism
+// 1️⃣ Code Reusability → Same method names for different behaviors.
+// 2️⃣ Flexibility → Methods can be extended or overridden as needed.
+// 3️⃣ Simplifies Code → No need for complex if-else checks for object types.
+// 4️⃣ Enhances Maintainability → Changes in one class don’t affect others.
+
+// 🚀 Final Thoughts
+// Polymorphism allows JavaScript objects to be treated as the same type, even if they behave differently.
+// It is commonly used in:
+// OOP Design (Inheritance, Method Overriding).
+// Function Arguments (Accepting different object types).
+// Frameworks & Libraries (e.g., React components use polymorphism).
+// Would you like to practice a real-world example using polymorphism? 🚀
+
+
+// 🎯 Scenario
+// Imagine a messaging system where:
+
+// Email notifications send an email.
+// SMS notifications send a text message.
+// Push notifications send an in-app notification.
+// Even though all three "send a notification," they do it differently.
+// Using polymorphism, we can create a common interface (send()) but let each notification type handle it in its own way.
+
+class Notification {
+    send() {
+        return "Sending a generic notification...";
+    }
+}
+class EmailNotification extends Notification {
+    send() {
+        return "📧 Sending an Email Notification...";
+    }
+}
+
+class SMSNotification extends Notification {
+    send() {
+        return "📩 Sending an SMS Notification...";
+    }
+}
+
+class PushNotification extends Notification {
+    send() {
+        return "🔔 Sending a Push Notification...";
+    }
+}
+
+function sendNotification(notification) {
+    console.log(notification.send()); // Calls the correct method automatically
+}
+
+// Create different notifications
+const email = new EmailNotification();
+const sms = new SMSNotification();
+const push = new PushNotification();
+
+// Send notifications using polymorphism
+sendNotification(email); // Output: 📧 Sending an Email Notification...
+sendNotification(sms);   // Output: 📩 Sending an SMS Notification...
+sendNotification(push);  // Output: 🔔 Sending a Push Notification...
+
+
+// 🔥 Why is This Useful?
+// No Need for if-else Statements → Clean & scalable code.
+// Easy to Extend → Just add new classes (e.g., WhatsAppNotification) without modifying existing code.
+// Increased Reusability → The same function (sendNotification()) works for all types.
+
 
