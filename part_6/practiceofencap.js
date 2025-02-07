@@ -74,3 +74,17 @@ class Person {
 let perso1 = new Person("bob", 25)
 // perso1.getage(6)
 // console.log(perso1.getage());
+
+
+
+// 
+// 
+// ::::::::::::::::ABSTRACTION IN JS::::::::::::::;
+//
+// 
+// 💡 What is Abstraction in JavaScript?
+// Abstraction hides the complex logic of a system and provides a simple interface.
+// It allows users to interact with a system without knowing how it works internally.
+// It is commonly used in APIs, libraries, and classes where users just 
+// call methods without worrying about the underlying logic.
+
