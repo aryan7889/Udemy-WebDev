@@ -195,6 +195,5 @@ sendNotification(push);  // Output: 🔔 Sending a Push Notification...
 // Increased Reusability → The same function (sendNotification()) works for all types.
 
 
-
 // we have learnt about the oops programming and now from tomorrow we would be 
 // heading towards the dom and bom manipulation in java script.
