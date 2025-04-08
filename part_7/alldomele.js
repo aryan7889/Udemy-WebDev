@@ -37,3 +37,9 @@ document.body.appendChild(div)
 if we have to use the dom inside the code file we have to use it like this way.
 
 */
+
+
+/*
+EDIT AND REMOVE THE ELEMENT:
+THE STEPS ARE WRITTEN IN THE HTML FILE WHICH IS NAMED AS HTMLDOM.HTM
+*/
