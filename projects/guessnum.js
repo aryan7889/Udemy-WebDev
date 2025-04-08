@@ -46,7 +46,21 @@ numGuess: Counter for number of guesses (starts at 1)
 
 
 let playGame = true;
+/*
+This is not a built-in JavaScript property - it's a variable you've created to track the game state. Here's the detailed explanation:
 
+Custom Variable:
+
+You're declaring a variable named playGame and setting it to true
+
+This is a common pattern in game development called a "game loop flag" or "game state flag"
+
+Purpose:
+
+Acts as a switch to control whether the game is active/running (true) or not (false)
+
+Used to prevent actions when the game is over (like making new guesses)
+*/
 if (playGame) {
   submit.addEventListener('click', function (e) {
     e.preventDefault();
