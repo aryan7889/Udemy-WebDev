@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai and code and dom manipulation.</title>
+</head>
+<body>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    function addLanguage(langname){
+        const li = document.createElement('li');
+        li.innerHTML = `${langname}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Python")
+    addLanguage("Typescript")
+
+/*BUT THIS METHOD IS NOT REALLY OPTIMISE HERE IT IS FINE BECAUSE HERE WE ARE 
+GOING THROUGH JUST ONE LINE BUT IN THE JIGH PROJECTS WHERE THERE ARE THOUSANDS 
+OF LINE IT CAN MAKE SOME OPTIMISATION ISSUE THERE SO WE NEEED TO USE SOME DSA 
+BTS.
+*/
+    function addOptiLanguage(langname) {
+        const li = document.createElement('li')
+        const addtext = document.createTextNode(langname)
+        li.appendChild(addtext)
+        document.querySelector('.language').appendChild(li)
+    }
+addOptiLanguage("Golang")
+
+// edit:
+
+// FOR EDIITITNG WE HAVE MANY METHODS WE CAN CHOOSE ANY OF THEM:
+
+const secondlang = document.querySelector("li:nth-child(1)")
+// secondlang.innerHTML="mojo"
+
+const newli = document.querySelector('li');
+newli.textContent = "mojo"
+secondlang.replaceWith(newli)
+
+
+</script>
+</html>
+<!-- 
+it is  DONE TILL THE VIDEO 34 AND FURTHER ON WE WILL BE LEARNING NOTES OF THE 
+VIDEOS 32 IS REMAINIG. -->
