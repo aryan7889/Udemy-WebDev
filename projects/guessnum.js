@@ -1,5 +1,11 @@
 let randomNumber = parseInt(Math.random() * 100 + 1);
+/*Generates a random number between 1-100 using Math.random() (which gives 0-0.999)
 
+Multiplies by 100 to get 0-99.999, adds 1 to make 1-100.999
+
+parseInt truncates the decimal to give integer 1-100
+
+*/
 const submit = document.querySelector('#subt');
 const userInput = document.querySelector('#guessField');
 const guessSlot = document.querySelector('.guesses');
@@ -7,10 +13,37 @@ const remaining = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('.lowOrHi');
 const startOver = document.querySelector('.resultParas');
 
+
+/*Selects various DOM elements:
+
+Submit button (#subt)
+
+Input field (#guessField)
+
+Display area for previous guesses (.guesses)
+
+Display for remaining guesses (.lastResult)
+
+Message area for high/low feedback (.lowOrHi)
+
+Container for results/restart (.resultParas)
+*/
+
+
 const p = document.createElement('p');
 
+/*Creates a new paragraph element to be used later for the restart button
+*/
 let prevGuess = [];
 let numGuess = 1;
+
+
+/*
+prevGuess: Array to store previous guesses
+
+numGuess: Counter for number of guesses (starts at 1)
+*/
+
 
 let playGame = true;
 
