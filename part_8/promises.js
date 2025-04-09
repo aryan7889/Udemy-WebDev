@@ -12,8 +12,97 @@ A Promise is in one of these states:
 pending: initial state, neither fulfilled nor rejected.
 fulfilled: meaning that the operation was completed successfully.
 rejected: meaning that the operation failed.
+
+
+A Promise is in one of these states:
+
+pending: initial state, neither fulfilled nor rejected.
+fulfilled: meaning that the operation was completed successfully.
+rejected: meaning that the operation failed.
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/promises.png
+
+
+
+Here are the example of the five types of the promises. which will help to understand 
+the syntax.
 */
 
 
+const promiseOne = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        console.log('async task is complete.');
+        resolve()
+    },1000)
+})
+promiseOne.then(function(){
+    console.log("promose is completed.")
+})
+
+const promiseTwo = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        console.log("Async task 2");
+        resolve()
+    },1000)
+})
+promiseTwo.then(function(){
+    console.log("Async 2 resolve.")
+})
 
 
+const promiseThree = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        resolve({username : "hitesh", email: "abc @gmial.com"
+        })
+    },1000)})
+promiseThree.then(function(user){
+    console.log(user)
+})
+
+
+const promisefour = new Promise(function(resolve,reject){
+    setTimeout(function(){
+        let error = true;
+        if(!error){
+            resolve({username : "abcd", email : "abc@gmail.com"})
+        }else{
+            reject ('erroe: something went wrong.')
+        }
+    },1000)
+})
+promisefour.then(function(user){
+    console.log(user);
+    return user.username
+}).then(function(username){
+    console.log(username);
+}).catch(function(error){
+    console.log(error);
+}).finally(() => console.log('error is now reseloved or rejected.')
+)
+
+
+// while there is error we have to take the use of the catch and the finally to 
+// handle the error.
+
+
+const promiseFive = new promise(function(resolve,reject){
+    setTimeout(function(){
+        let error = true;
+        if(!error){
+            resolve({username : "abcd", email : "abc@gmail.com"})
+        }else{
+            reject ('erroe: something went wrong.')
+        }
+    },1000)
+    })
+async function consumePromiseFive() {
+    try {
+    const response = await promiseFive
+    console.log(response);}
+    catch (error) {
+    console.log(error);
+  }
+}
+consumePromiseFive()
