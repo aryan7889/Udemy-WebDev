@@ -69,6 +69,15 @@ if (playGame) {
     validateGuess(guess);
   });
 }
+/*
+Adds click handler to submit button
+
+e.preventDefault() prevents form submission/page reload
+
+Gets user input value and converts to integer
+
+Passes guess to validateGuess() function
+*/
 
 function validateGuess(guess) {
   if (isNaN(guess)) {
@@ -90,6 +99,23 @@ function validateGuess(guess) {
   }
 }
 
+/*
+Validates the user input:
+
+Checks if not a number (isNaN)
+
+Checks if < 1
+
+Checks if > 100
+
+If valid:
+
+Adds guess to prevGuess array
+
+If 11th guess (limit reached), ends game
+
+Otherwise, displays guess and checks if correct
+*/
 function checkGuess(guess) {
   if (guess === randomNumber) {
     displayMessage(`You guessed it right`);
@@ -107,7 +133,15 @@ function displayGuess(guess) {
   numGuess++;
   remaining.innerHTML = `${11 - numGuess} `;
 }
+/*
+Clears input field
 
+Adds guess to previous guesses display
+
+Increments guess counter
+
+Updates remaining guesses display
+*/
 function displayMessage(message) {
   lowOrHi.innerHTML = `<h2>${message}</h2>`;
 }
@@ -121,7 +155,19 @@ function endGame() {
   playGame = false;
   newGame();
 }
+/*
+Clears input field
 
+Disables input field
+
+Creates restart button
+
+Adds restart button to DOM
+
+Sets playGame to false
+
+Calls newGame() to set up restart handler
+*/
 function newGame() {
   const newGameButton = document.querySelector('#newGame');
   newGameButton.addEventListener('click', function (e) {
@@ -136,3 +182,22 @@ function newGame() {
     playGame = true;
   });
 }
+/*
+Sets up click handler for restart button
+
+Resets game state:
+
+New random number
+
+Clears previous guesses
+
+Resets guess counter
+
+Clears displays
+
+Re-enables input
+
+Removes restart button
+
+Sets playGame back to true
+*/
