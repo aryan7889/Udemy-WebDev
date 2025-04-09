@@ -106,3 +106,37 @@ async function consumePromiseFive() {
   }
 }
 consumePromiseFive()
+
+/*
+Why Promises Were Created
+JavaScript is single-threaded, but needs to handle operations like:
+
+Network requests (APIs)
+
+File I/O (in Node.js)
+
+Timers and delays
+
+Database operations
+
+Before promises, we used callback functions, which led to "callback hell" - nested, hard-to-read code.
+
+Key Benefits of Promises
+Better Asynchronous Code Management:
+
+Avoid "pyramid of doom" (deeply nested callbacks)
+
+Write flatter, more readable code
+
+Improved Error Handling:
+
+Single .catch() for all errors in the chain
+
+Better than error-first callbacks
+
+Chaining Capability:
+
+Sequence async operations cleanly
+
+Pass data between steps easily
+*/
