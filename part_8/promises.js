@@ -140,3 +140,16 @@ Sequence async operations cleanly
 
 Pass data between steps easily
 */
+
+
+async function getAllUsers(){
+    try {
+        const response = await fetch('')
+        const data = await response.json()
+        console.log(data);    
+    } catch (error) {
+        console.log("E:", error);
+        
+    }
+}
+getAllUsers()
