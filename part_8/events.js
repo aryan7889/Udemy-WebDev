@@ -151,9 +151,23 @@ addtask.addEventListener('click',function () {
     }
 
     inputtask = ""
+
+    // to line through the function which have been completed on
+    // checking the correct box.
 })
 
 
 // mordern to do list:
 
-   
+function calculator(operation) {
+    return function(a, b) {
+        if (operation === "add") return a + b;
+        if (operation === "multiply") return a * b;
+        if (operation === "subtract") return a - b;
+    };
+}
+let add = calculator("add");
+let multiply = calculator("multiply");
+console.log(add(5, 3));
+console.log(multiply(4, 6));
+
