@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .todo-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .input-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        #inputtask {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #e0e6ed;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        #inputtask:focus {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        #add-task {
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        #add-task:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        #add-task:active {
+            transform: translateY(0);
+        }
+
+        #task-manager {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        #task-manager::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #task-manager::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        #task-manager::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            background: white;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #667eea;
+            animation: taskAppear 0.5s ease-out;
+        }
+
+        @keyframes taskAppear {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .task:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .task.completed {
+            background: #f8f9fa;
+            border-left-color: #27ae60;
+            opacity: 0.8;
+        }
+
+        .task.completed li {
+            text-decoration: line-through;
+            color: #7f8c8d;
+        }
+
+        .task li {
+            flex: 1;
+            list-style: none;
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: 500;
+            margin-right: 15px;
+            line-height: 1.4;
+            word-break: break-word;
+        }
+
+        .task button {
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-left: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            min-width: 40px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checktask {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(39, 174, 96, 0.3);
+        }
+
+        .checktask:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+        }
+
+        .deletebtn {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        }
+
+        .deletebtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #7f8c8d;
+        }
+
+        .empty-state img {
+            width: 80px;
+            height: 80px;
+            opacity: 0.5;
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #95a5a6;
+        }
+
+        .empty-state p {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        .task-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .task-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .task-stats .stat span {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        @media (max-width: 600px) {
+            .todo-container {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .input-section {
+                flex-direction: column;
+            }
+
+            #add-task {
+                width: 100%;
+            }
+
+            .task {
+                padding: 12px 15px;
+            }
+
+            .task li {
+                font-size: 15px;
+            }
+        }
+
+        /* Custom animations for interactions */
+        .task.removing {
+            animation: taskRemove 0.4s ease-out forwards;
+        }
+
+        @keyframes taskRemove {
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+                height: 0;
+                padding: 0;
+                margin: 0;
+            }
+        }
+
+        .task.completing {
+            animation: taskComplete 0.5s ease-out;
+        }
+
+        @keyframes taskComplete {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Floating action button style for mobile */
+        @media (max-width: 600px) {
+            #add-task {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                position: relative;
+                overflow: hidden;
+            }
+
+            #add-task::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                transition: left 0.5s;
+            }
+
+            #add-task:hover::before {
+                left: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="todo-container">
+        <div class="header">
+            <h1>✨ My Tasks</h1>
+            <p>Stay organized and productive</p>
+        </div>
+
+        <div class="input-section">
+            <input type="text" id="inputtask" placeholder="What needs to be done?" maxlength="100">
+            <button id="add-task">Add Task</button>
+        </div>
+
+        <div id="task-manager">
+            <div class="empty-state" id="empty-state">
+                <div style="font-size: 3rem; margin-bottom: 15px;">📝</div>
+                <h3>No tasks yet</h3>
+                <p>Add a task above to get started!</p>
+            </div>
+        </div>
+
+        <div class="task-stats" id="task-stats" style="display: none;">
+            <div class="stat">
+                <span id="total-tasks">0</span> total
+            </div>
+            <div class="stat">
+                <span id="completed-tasks">0</span> completed
+            </div>
+            <div class="stat">
+                <span id="pending-tasks">0</span> pending
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fixed your JavaScript code with proper variable names and logic
+        const addTask = document.querySelector('#add-task');
+        const taskManager = document.querySelector('#task-manager'); // Fixed typo
+        const inputTask = document.querySelector('#inputtask');
+        const emptyState = document.querySelector('#empty-state');
+        const taskStats = document.querySelector('#task-stats');
+
+        let totalTasks = 0;
+        let completedTasks = 0;
+
+        // Function to update statistics
+        function updateStats() {
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('completed-tasks').textContent = completedTasks;
+            document.getElementById('pending-tasks').textContent = totalTasks - completedTasks;
+            
+            if (totalTasks > 0) {
+                taskStats.style.display = 'flex';
+                emptyState.style.display = 'none';
+            } else {
+                taskStats.style.display = 'none';
+                emptyState.style.display = 'block';
+            }
+        }
+
+        // Function to add a new task
+        function addNewTask() {
+            const taskText = inputTask.value.trim(); // Fixed variable name and added trim()
+            
+            if (taskText === "") {
+                // Better alert styling
+                inputTask.style.borderColor = '#e74c3c';
+                inputTask.setAttribute('placeholder', 'Please type something...');
+                setTimeout(() => {
+                    inputTask.style.borderColor = '#e0e6ed';
+                    inputTask.setAttribute('placeholder', 'What needs to be done?');
+                }, 2000);
+                return;
+            }
+
+            // Create task container
+            let task = document.createElement('div');
+            task.classList.add('task');
+
+            // Create task text
+            let li = document.createElement('li');
+            li.innerText = taskText;
+            task.appendChild(li);
+
+            // Create check button
+            let checkButton = document.createElement("button");
+            checkButton.innerHTML = "✓";
+            checkButton.classList.add('checktask');
+            task.appendChild(checkButton);
+
+            // Create delete button
+            let deleteButton = document.createElement("button");
+            deleteButton.innerHTML = '🗑️'; // Better delete icon
+            deleteButton.classList.add('deletebtn');
+            task.appendChild(deleteButton);
+
+            // Add event listeners
+            checkButton.addEventListener('click', function() {
+                task.classList.add('completing');
+                setTimeout(() => {
+                    task.classList.toggle('completed');
+                    if (task.classList.contains('completed')) {
+                        completedTasks++;
+                        checkButton.innerHTML = '↺'; // Undo icon
+                    } else {
+                        completedTasks--;
+                        checkButton.innerHTML = '✓'; // Check icon
+                    }
+                    updateStats();
+                }, 250);
+            });
+
+            deleteButton.addEventListener('click', function() {
+                task.classList.add('removing');
+                setTimeout(() => {
+                    if (task.classList.contains('completed')) {
+                        completedTasks--;
+                    }
+                    totalTasks--;
+                    task.remove();
+                    updateStats();
+                }, 400);
+            });
+
+            // Add to task manager
+            taskManager.appendChild(task);
+            totalTasks++;
+            updateStats();
+
+            // Clear input
+            inputTask.value = ""; // Fixed: was setting to wrong variable
+            inputTask.focus(); // Keep focus for better UX
+        }
+
+        // Event listener for add task button
+        addTask.addEventListener('click', addNewTask);
+
+        // Allow Enter key to add tasks
+        inputTask.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addNewTask();
+            }
+        });
+
+        // Initialize
+        updateStats();
+        inputTask.focus(); // Auto-focus on load
+    </script>
+</body>
+</html>

@@ -119,8 +119,41 @@ resetbtn.addEventListener('click',function() {
 })
 
 
+// to do list:
+
+const addtask = document.querySelector('#add-task')
+const taskmanager = documnet.querySelector('#task manager')
+const inputtask = document.querySelector('#inputtask');
+
+// event listner for the add the task button
+addtask.addEventListener('click',function () {
+    let task = document.createElement('div')
+    task.classList.add('task');
+
+    let li = document.createElement('li')
+    li.innerText = `${inputtask.value}`
+    task.append(li);
+
+    let checkbutton = document.createElement("button")
+    checkbutton.innerText = "✓"
+    checkbutton.classList.add('checktask')
+    task.append(checkbutton)
+
+    let decletebutton = document.createElement("button")
+    decletebutton.innerText = '...'
+    decletebutton.classList.add('deletebtn')
+    task.append(decletebutton)
+
+    if (inputvalue === "") {
+        alert('please type something.')
+    }else{
+        taskmanager.append(task)
+    }
+
+    inputtask = ""
+})
 
 
+// mordern to do list:
 
-
-
+   
