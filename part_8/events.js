@@ -47,3 +47,80 @@ document.querySelector('#images').addEventListener
 })
 
 
+// to create the stop watch function witht he dom manipulation
+// and the event listeners
+
+// varaibles for the start stop and reset.
+let start = document.querySelector('#start')
+let reset = document.querySelector('#reset')
+
+// variables for the time
+let seconds = 0
+let minutes = 0
+let hours = 0
+// here problem would be that stopwatch would be running but the leading zero would 
+// be disappear as sson as the seconds or the minutes would be in the double'
+// digit. so now new variable as to be made so that it dont disappear:
+let leadingseconds = 0;
+let leadingminutes = 0;
+let leadinghours = 0;
+// variables for set interval
+let timeInterval = 'null'
+let timestatus = 'stopped'
+function stopwatch(){
+    seconds ++
+    if(seconds/60===1){
+        seconds = 0;
+        minutes++;
+    }
+    if (minutes/60===1) {
+        minutes = 0;
+        hours++
+    }
+    if (seconds<10){
+        leadingseconds = 0 + seconds.toString();
+    }else{
+        leadingseconds = seconds;
+    }
+    if (minutes<10){
+        leadingminutes = 0 + minutes.toString();
+    }else{
+        leadingminutes = minutes;
+    }
+    if (hours<10){
+        leadinghours = 0 + hours.toString();
+    }else{
+        leadinghours = hours;
+    }
+let display = document.querySelector('timer').innerText = leadinghours + ':'+ leadingminutes + ':'
+leadingseconds;
+}
+window.setInterval(stopwatch,1000);
+
+startstopbutton.addEventListener('click',function(){
+    if(timestatus==='stopped'){
+        timeInterval = window.setInterval(stopwatch,1000)
+        document.getElementById('startstopbtn').innerText = '.....'
+        timestatus = 'started'
+    }else{
+        window.clearInterval(timeInterval)
+        document.getElementById('startstopbtn').innerText = '....'
+        timestatus = 'stopped'
+    }
+});
+
+resetbtn.addEventListener('click',function() {
+    windows.clearInterval(timeInterval);
+    seconds = 0
+    minutes = 0
+    hours = 0
+
+    documnet.getElementById('timer').innerText = "00:00:00"
+})
+
+
+
+
+
+
+
