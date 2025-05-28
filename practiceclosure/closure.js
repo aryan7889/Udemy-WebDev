@@ -76,4 +76,35 @@ function createaccount(initialbalance){
     }
 }
 
-// exercise 3 
+// method 4  
+function createaccount(initialbalance){
+    let balance = initialbalance;                  //so we can make functions then make them return at the end of the code file.
+    function deposit(amount){
+        balance += amount;
+    }
+    function withdraw(amount){
+        if (amount<=balance) {
+            balance-=amount;
+        }else{
+            console.log("insufficient balance.");            
+        }
+    }
+    function getBalance(){
+        return balance;
+    }
+    return{
+        deposit: deposit,
+        withdraw: withdraw,
+        getBalance: getBalance
+    }
+}
+// const account = createaccount(1000)
+// account.deposit(100)
+// account.withdraw(200)
+// console.log(account.getBalance());
+
+/*This is also the correct method to return the function in the form of the object 
+as if we can write the whole code first then at the end with help of the object can return the things in the on go.
+*/
+
+// exercise 3 :
