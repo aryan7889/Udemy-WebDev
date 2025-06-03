@@ -108,3 +108,54 @@ as if we can write the whole code first then at the end with help of the object 
 */
 
 // exercise 3 :
+// Exercise 3: Private Variables
+// Problem: Create a function that returns an object with methods to get and set a private variable.
+
+
+function createname(name){
+    let privatename = name;
+    return {
+        getname: function (){
+            return privatename
+        },
+        setname: function (newName){
+        privatename = newName;
+        }
+    }
+}
+// const person = createname("Alice")
+// console.log(person.getname());
+// person.setname("bob")
+// console.log(person.getname());
+// console.log(person.privatename);
+
+
+
+// Exercise 5: Cache Function
+// Problem: Create a function that caches the results 
+// of expensive operations.
+
+function createcache(){
+    let cache = {};
+    return {
+        set: function(key,value){
+            cache[key] = value;
+        },
+        get: function(key){}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
